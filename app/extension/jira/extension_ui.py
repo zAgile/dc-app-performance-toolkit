@@ -29,8 +29,8 @@ def app_specific_action(webdriver, datasets):
             locator = (By.XPATH, "//*[@id='container-wrap']/table/tbody/tr/td/a[contains(@onclick,'SalesforcePropertiesDetails')]")
             table = page.wait_until_visible(locator)
             element = table.get_attribute("onclick")
-            d = element[45:-2]
-            page.go_to_url(f"{JIRA_SETTINGS.server_url}"+d)
+            url = element[40:-2]
+            page.go_to_url(f"{JIRA_SETTINGS.server_url}"+url)
             page.get_element((By.XPATH, '//*[@id="details"]/div/div[1]/h2'))
             page.get_element((By.XPATH, '//*[@id="commentsTab"]')).click()
             page.get_element((By.XPATH, '//*[@id="attachmentsTab"]')).click()

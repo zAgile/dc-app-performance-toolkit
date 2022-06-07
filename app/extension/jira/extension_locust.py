@@ -3,8 +3,8 @@ from locustio.common_utils import init_logger, jira_measure, run_as_specific_use
 
 logger = init_logger(app_type='jira')
 issue_key="ONE-1"
-case_id="500J000000Vc6cZIAR"
-attachment_id = "10000"
+case_id="5008a00001ujPQOAA2"
+attachment_id = "10101"
 
 @jira_measure("locust_app_specific_action")
 # @run_as_specific_user(username='admin', password='admin')  # run as specific user
@@ -20,9 +20,7 @@ def app_specific_action(locust):
     id = re.findall(id_pattern_example, content)    # get ID from response using regexp
 
     logger.locust_info(f'token: {token}, id: {id}')  # log info for debug when verbose is true in jira.yml file
-    if 'attachments' not in content:
-        logger.error(f"'assertion string' was not found in {content}")
-    assert 'attachments' in content  # assert specific string in response content
+    assert r.status_code is 200, "bad request or no exist attachments"
 
 
     """GET COMMENT"""
@@ -36,9 +34,8 @@ def app_specific_action(locust):
     id = re.findall(id_pattern_example, content)
 
     logger.locust_info(f'token: {token}, id: {id}')
-    if 'comments' not in content:
-        logger.error(f"'comments do not exist in {content}")
-    assert 'comments' in content
+    assert r.status_code is 200, "bad request or no exist comments"
+
 
 
     """GET FEEDS"""
@@ -52,9 +49,8 @@ def app_specific_action(locust):
     id = re.findall(id_pattern_example, content)
 
     logger.locust_info(f'token: {token}, id: {id}')
-    if 'feeds' not in content:
-        logger.error(f"'feeds do not exist in {content}")
-    assert 'feeds' in content
+    assert r.status_code is 200, "bad request or no exist feeds"
+
 
 
     """GET FEEDS - SHOW MORE"""
@@ -68,9 +64,8 @@ def app_specific_action(locust):
     id = re.findall(id_pattern_example, content)
 
     logger.locust_info(f'token: {token}, id: {id}')
-    if 'feeds' not in content:
-        logger.error(f"'feeds do not exist in {content}")
-    assert 'feeds' in content
+    assert r.status_code is 200, "bad request or no exist feeds"
+
 
 
     """GET EMAILS"""
@@ -84,9 +79,8 @@ def app_specific_action(locust):
     id = re.findall(id_pattern_example, content)
 
     logger.locust_info(f'token: {token}, id: {id}')
-    if 'emails' not in content:
-        logger.error(f"'feeds do not exist in {content}")
-    assert 'emails' in content
+    assert r.status_code is 200, "bad request or no exist emails"
+
 
 
 
@@ -111,9 +105,9 @@ def app_specific_action(locust):
 
 
     """POST IMPORT"""
-    pyload = {"entityId":"500J000000Vc6cZIAR","filename":"case1.jpg","contentType":"image/jpeg","attachmentObjName":"Attachment","attachmentId":"00PJ0000009uV2gMAE"}
+    pyload = {"entityId":"5008a00001ujPQOAA2","filename":"SomePDF.pdf","contentType":"application/pdf","attachmentObjName":"Attachment","attachmentId":"00P8a00001uvZJfEAM"}
     r = locust.post(
-        f'/rest/zagile-sf/1.0/attachment/{issue_key}/import?token=eetsR4956u1jQAhgdNS9bXu1WIyWxY1b3TiXl8hRz%2Bg%3D',
+        f'/rest/zagile-sf/1.0/attachment/{issue_key}/import?token=MyBL6IzPLh8aQw%2BVCvTpeEAZEW0ANP3SAqRt3cOnkSI%3D',
         json=pyload, headers={'content-type': 'application/json', 'Accept': 'application/json', 'Content-Length': '155'},
         catch_response=True)  # call app-specific POST endpoint
 
@@ -122,7 +116,7 @@ def app_specific_action(locust):
 
     """POST DOWNLOAD"""
     r = locust.post(
-        f'/plugins/servlet/downloadSalesforceAttachment?attachmentId=00PJ0000009uV2gMAE&issueKey={issue_key}&entityId={case_id}&attachmentName=case1.jpg&token=eetsR4956u1jQAhgdNS9bXu1WIyWxY1b3TiXl8hRz%2Bg%3D&sObjName=Attachment&contentType=image/jpeg',
+        f'/plugins/servlet/downloadSalesforceAttachment?attachmentId=0688a00000GUhpyAAD&issueKey={issue_key}&entityId={case_id}&attachmentName=SomePDF.pdf&token=beOjrOf8tnJR5CdCkI62iWpX%2B9W3cuhgiEkoLZ4N3%2BE%3D&sObjName=ContentVersion&contentType=PDF',
         headers={'content-type': 'application/json', 'Accept': 'application/json', 'X-Atlassian-Token': 'no-check'},
         catch_response=True)
 
