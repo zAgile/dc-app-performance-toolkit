@@ -101,9 +101,6 @@ def app_specific_action(locust):
 
 
 
-
-
-
     """POST IMPORT"""
     pyload = {"entityId":"5008a00001ujPQOAA2","filename":"SomePDF.pdf","contentType":"application/pdf","attachmentObjName":"Attachment","attachmentId":"00P8a00001uvZJfEAM"}
     r = locust.post(
@@ -131,7 +128,3 @@ def app_specific_action(locust):
         catch_response=True)
 
     assert r.status_code is 200, "the attachment not sent after request POST"
-
-
-
-
