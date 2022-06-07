@@ -34,6 +34,21 @@
             <stringProp name="Argument.value">${__P(application_postfix, )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="issue.key" elementType="Argument">
+            <stringProp name="Argument.name">issue.key</stringProp>
+            <stringProp name="Argument.value">ONE-1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="case.id" elementType="Argument">
+            <stringProp name="Argument.name">case.id</stringProp>
+            <stringProp name="Argument.value">5008a00001ujPQOAA2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="attachment.id" elementType="Argument">
+            <stringProp name="Argument.name">attachment.id</stringProp>
+            <stringProp name="Argument.value">10101</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -9310,7 +9325,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/ONE-1?entityId=5008a00001ujPQOAA2</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue.key}?entityId=${case.id}</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9340,7 +9355,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/comment/5008a00001ujPQOAA2?limit=20&amp;offset=0</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/comment/${case.id}?limit=20&amp;offset=0</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9370,7 +9385,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/ONE-1/feed/5008a00001ujPQOAA2?pageSize=20</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue.key}/feed/${case.id}?pageSize=20</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9400,7 +9415,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/ONE-1/feed/5008a00001ujPQOAA2?pageSize=20</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue.key}/feed/${case.id}?pageSize=20</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9430,7 +9445,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/ONE-1/email/5008a00001ujPQOAA2?limit=20&amp;offset=0</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue.key}/email/${case.id}?limit=20&amp;offset=0</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9460,7 +9475,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/ONE-1/sync-sf/5008a00001ujPQOAA2?concept=Case</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue.key}/sync-sf/${case.id}?concept=Case</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9497,7 +9512,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/ONE-1/import?token=MyBL6IzPLh8aQw%2BVCvTpeEAZEW0ANP3SAqRt3cOnkSI%3D</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue.key}/import?token=MyBL6IzPLh8aQw%2BVCvTpeEAZEW0ANP3SAqRt3cOnkSI%3D</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9549,7 +9564,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/plugins/servlet/downloadSalesforceAttachment?attachmentId=0688a00000GUhpyAAD&amp;issueKey=ONE-1&amp;entityId=5008a00001ujPQOAA2&amp;attachmentName=SomePDF.pdf&amp;token=beOjrOf8tnJR5CdCkI62iWpX%2B9W3cuhgiEkoLZ4N3%2BE%3D&amp;sObjName=ContentVersion&amp;contentType=PDF</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/plugins/servlet/downloadSalesforceAttachment?attachmentId=0688a00000GUhpyAAD&amp;issueKey=${issue.key}&amp;entityId=${case.id}&amp;attachmentName=SomePDF.pdf&amp;token=beOjrOf8tnJR5CdCkI62iWpX%2B9W3cuhgiEkoLZ4N3%2BE%3D&amp;sObjName=ContentVersion&amp;contentType=PDF</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9601,7 +9616,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/10101/sync-sf/5008a00001ujPQOAA2</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${attachment.id}/sync-sf/${case.id}</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
