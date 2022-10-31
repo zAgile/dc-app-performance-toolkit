@@ -34,19 +34,9 @@
             <stringProp name="Argument.value">${__P(application_postfix, )}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="issue.key" elementType="Argument">
-            <stringProp name="Argument.name">issue.key</stringProp>
-            <stringProp name="Argument.value">ONE-1</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="case.id" elementType="Argument">
             <stringProp name="Argument.name">case.id</stringProp>
-            <stringProp name="Argument.value">5008a00001ujPQOAA2</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="attachment.id" elementType="Argument">
-            <stringProp name="Argument.name">attachment.id</stringProp>
-            <stringProp name="Argument.value">10101</stringProp>
+            <stringProp name="Argument.value">5008a00001ujPUfAAM</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -967,6 +957,17 @@ JMeterUtils.setProperty(&quot;c_AtlToken&quot; + user_counter, atl_token)
           <intProp name="LoopController.loops">-1</intProp>
         </LoopController>
         <hashTree>
+          <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="custom-issues" enabled="true">
+            <stringProp name="filename">/home/dania/Desarrollo/aToolkit/dc-app-performance-toolkit/app/datasets/jira/custom-issues.csv</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="variableNames">issue_key_c,issue_id_c,issue_project_key_c</stringProp>
+            <boolProp name="randomOrder">false</boolProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="rewindOnTheEndOfList">true</boolProp>
+            <boolProp name="independentListPerThread">false</boolProp>
+          </com.blazemeter.jmeter.RandomCSVDataSetConfig>
+          <hashTree/>
           <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="issues" enabled="true">
             <stringProp name="filename">datasets/jira/issues.csv</stringProp>
             <stringProp name="fileEncoding">UTF-8</stringProp>
@@ -9315,13 +9316,21 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET attachments" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                  <collectionProp name="Arguments.arguments"/>
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="entityId" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${case.id}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">entityId</stringProp>
+                    </elementProp>
+                  </collectionProp>
                 </elementProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue.key}?entityId=${case.id}</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue_key_c}</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9417,7 +9426,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue.key}/feed/${case.id}?pageSize=20</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue_key_c}/feed/${case.id}?pageSize=20</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9465,7 +9474,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue.key}/feed/${case.id}?pageSize=20</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue_key_c}/feed/${case.id}?pageSize=20</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9513,7 +9522,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue.key}/email/${case.id}?limit=20&amp;offset=0</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/${issue_key_c}/email/${case.id}?limit=20&amp;offset=0</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9561,7 +9570,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue.key}/sync-sf/${case.id}?concept=Case</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue_key_c}/sync-sf/${case.id}?concept=Case</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9601,7 +9610,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST download" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST download" enabled="false">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="content-type" elementType="HTTPArgument">
@@ -9631,7 +9640,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/plugins/servlet/downloadSalesforceAttachment?attachmentId=0688a00000GUhpyAAD&amp;issueKey=${issue.key}&amp;entityId=${case.id}&amp;attachmentName=SomePDF.pdf&amp;token=beOjrOf8tnJR5CdCkI62iWpX%2B9W3cuhgiEkoLZ4N3%2BE%3D&amp;sObjName=ContentVersion&amp;contentType=PDF</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/plugins/servlet/downloadSalesforceAttachment?attachmentId=00P8a000021Meo3EAC&amp;issueKey=${issue.key}&amp;entityId=${case.id}&amp;attachmentName=SomePDF.pdf&amp;token=Ch4J0bJUvWFp8AthNHmtcNR1IieCXN12nswJORtzpRI%3D&amp;sObjName=Attachment&amp;contentType=application/pdf</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9653,7 +9662,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST send attachments" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST send attachments" enabled="false">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                   <collectionProp name="Arguments.arguments"/>
                 </elementProp>
@@ -9696,13 +9705,13 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 </HeaderManager>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST import" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST import" enabled="false">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">{&quot;entityId&quot;:&quot;5008a00001ujPQOAA2&quot;,&quot;filename&quot;:&quot;SomePDF.pdf&quot;,&quot;contentType&quot;:&quot;application/pdf&quot;,&quot;attachmentObjName&quot;:&quot;Attachment&quot;,&quot;attachmentId&quot;:&quot;00P8a00001uvZJfEAM&quot;}</stringProp>
+                      <stringProp name="Argument.value">{&quot;entityId&quot;:&quot;5008a00001ujPUfAAM&quot;,&quot;filename&quot;:&quot;SomePDF.pdf&quot;,&quot;contentType&quot;:&quot;application/pdf&quot;,&quot;attachmentObjName&quot;:&quot;Attachment&quot;,&quot;attachmentId&quot;:&quot;00P8a000021Meo3EAC&quot;}</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                     </elementProp>
                   </collectionProp>
@@ -9711,7 +9720,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue.key}/import?token=MyBL6IzPLh8aQw%2BVCvTpeEAZEW0ANP3SAqRt3cOnkSI%3D</stringProp>
+                <stringProp name="HTTPSampler.path">${application.postfix}/rest/zagile-sf/1.0/attachment/${issue.key}/import?token=Ch4J0bJUvWFp8AthNHmtcNR1IieCXN12nswJORtzpRI%3D</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

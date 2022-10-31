@@ -2,9 +2,13 @@ import re
 from locustio.common_utils import init_logger, jira_measure, run_as_specific_user  # noqa F401
 
 logger = init_logger(app_type='jira')
-issue_key="ONE-1"
-case_id="5008a00001ujPQOAA2"
-attachment_id = "10101"
+issue_key="ONE-2"
+case_id="5008a00001ujPUfAAM"
+attachment_id = "10602"
+attachment_id_download = "00P8a000021Meo3EAC"
+name_attachment = "SomePDF.pdf"
+token_attachment = "Ch4J0bJUvWFp8AthNHmtcNR1IieCXN12nswJORtzpRI%3D"
+url_dowload = "&token=Ch4J0bJUvWFp8AthNHmtcNR1IieCXN12nswJORtzpRI%3D&sObjName=Attachment&contentType=application/pdf"
 
 @jira_measure("locust_app_specific_action")
 # @run_as_specific_user(username='admin', password='admin')  # run as specific user
@@ -102,9 +106,10 @@ def app_specific_action(locust):
 
 
     """POST IMPORT"""
-    pyload = {"entityId":"5008a00001ujPQOAA2","filename":"SomePDF.pdf","contentType":"application/pdf","attachmentObjName":"Attachment","attachmentId":"00P8a00001uvZJfEAM"}
+    pyload = {"entityId":"5008a00001ujPUfAAM","filename":"SomePDF.pdf","contentType":"application/pdf","attachmentObjName":"Attachment","attachmentId":"00P8a000021Meo3EAC"}
+
     r = locust.post(
-        f'/rest/zagile-sf/1.0/attachment/{issue_key}/import?token=MyBL6IzPLh8aQw%2BVCvTpeEAZEW0ANP3SAqRt3cOnkSI%3D',
+        f'/rest/zagile-sf/1.0/attachment/{issue_key}/import?token=Ch4J0bJUvWFp8AthNHmtcNR1IieCXN12nswJORtzpRI%3D',
         json=pyload, headers={'content-type': 'application/json', 'Accept': 'application/json', 'Content-Length': '155'},
         catch_response=True)  # call app-specific POST endpoint
 
@@ -113,7 +118,7 @@ def app_specific_action(locust):
 
     """POST DOWNLOAD"""
     r = locust.post(
-        f'/plugins/servlet/downloadSalesforceAttachment?attachmentId=0688a00000GUhpyAAD&issueKey={issue_key}&entityId={case_id}&attachmentName=SomePDF.pdf&token=beOjrOf8tnJR5CdCkI62iWpX%2B9W3cuhgiEkoLZ4N3%2BE%3D&sObjName=ContentVersion&contentType=PDF',
+        f'/plugins/servlet/downloadSalesforceAttachment?attachmentId={attachment_id_download}&issueKey={issue_key}&entityId={case_id}&attachmentName={name_attachment}{url_dowload}',
         headers={'content-type': 'application/json', 'Accept': 'application/json', 'X-Atlassian-Token': 'no-check'},
         catch_response=True)
 
