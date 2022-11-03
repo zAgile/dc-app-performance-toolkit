@@ -9378,7 +9378,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="jmeter_app_specific:view_sf_details" enabled="true">
+            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="view_sf_details" enabled="true">
               <intProp name="ThroughputController.style">1</intProp>
               <boolProp name="ThroughputController.perThread">false</boolProp>
               <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -9405,7 +9405,7 @@ if (response_data.name != vars.get(&quot;app_specific_username&quot;)) {
                 </JSR223PreProcessor>
                 <hashTree/>
               </hashTree>
-              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_view_caseDetails_popup" enabled="true">
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_app_specific:view_sf_details_popup" enabled="true">
                 <boolProp name="TransactionController.includeTimers">false</boolProp>
                 <boolProp name="TransactionController.parent">true</boolProp>
               </TransactionController>
@@ -9489,7 +9489,7 @@ if ( sleep_time &gt; 0 ) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="jmeter_app_specific:view_sf_attachment" enabled="true">
+            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="view_sf_attachment" enabled="true">
               <intProp name="ThroughputController.style">1</intProp>
               <boolProp name="ThroughputController.perThread">false</boolProp>
               <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -9516,7 +9516,7 @@ if ( sleep_time &gt; 0 ) {
                 </JSR223PreProcessor>
                 <hashTree/>
               </hashTree>
-              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_view_sf_attachments" enabled="true">
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_app_specific:view_sf_attachment_action" enabled="true">
                 <boolProp name="TransactionController.includeTimers">false</boolProp>
                 <boolProp name="TransactionController.parent">true</boolProp>
               </TransactionController>
@@ -9695,7 +9695,7 @@ if ( sleep_time &gt; 0 ) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="jmeter_app_specific:open_send_attachment" enabled="true">
+            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="open_send_attachment" enabled="true">
               <intProp name="ThroughputController.style">1</intProp>
               <boolProp name="ThroughputController.perThread">false</boolProp>
               <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -9722,7 +9722,7 @@ if ( sleep_time &gt; 0 ) {
                 </JSR223PreProcessor>
                 <hashTree/>
               </hashTree>
-              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_open_send_attachments" enabled="true">
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_app_specific:open_send_attachment_action" enabled="true">
                 <boolProp name="TransactionController.includeTimers">false</boolProp>
                 <boolProp name="TransactionController.parent">true</boolProp>
               </TransactionController>
@@ -9852,7 +9852,7 @@ if ( sleep_time &gt; 0 ) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="jmeter_app_specific:view_sf_comment" enabled="true">
+            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="view_sf_comment" enabled="true">
               <intProp name="ThroughputController.style">1</intProp>
               <boolProp name="ThroughputController.perThread">false</boolProp>
               <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -9879,7 +9879,7 @@ if ( sleep_time &gt; 0 ) {
                 </JSR223PreProcessor>
                 <hashTree/>
               </hashTree>
-              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_comment_action" enabled="true">
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_app_specific:view_sf_comment_action" enabled="true">
                 <boolProp name="TransactionController.includeTimers">false</boolProp>
                 <boolProp name="TransactionController.parent">true</boolProp>
               </TransactionController>
@@ -9966,7 +9966,7 @@ if ( sleep_time &gt; 0 ) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="jmeter_app_specific:view_sf_feeds" enabled="true">
+            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="view_sf_feeds" enabled="true">
               <intProp name="ThroughputController.style">1</intProp>
               <boolProp name="ThroughputController.perThread">false</boolProp>
               <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -9993,7 +9993,7 @@ if ( sleep_time &gt; 0 ) {
                 </JSR223PreProcessor>
                 <hashTree/>
               </hashTree>
-              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_feeds_action" enabled="true">
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_app_specific:view_sf_feeds_action" enabled="true">
                 <boolProp name="TransactionController.includeTimers">false</boolProp>
                 <boolProp name="TransactionController.parent">true</boolProp>
               </TransactionController>
@@ -10128,7 +10128,7 @@ if ( sleep_time &gt; 0 ) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="jmeter_app_specific:view_sf_emails" enabled="true">
+            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="view_sf_emails" enabled="true">
               <intProp name="ThroughputController.style">1</intProp>
               <boolProp name="ThroughputController.perThread">false</boolProp>
               <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -10155,7 +10155,7 @@ if ( sleep_time &gt; 0 ) {
                 </JSR223PreProcessor>
                 <hashTree/>
               </hashTree>
-              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_emails_action" enabled="true">
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="jmeter_app_specific:view_sf_emails_action" enabled="true">
                 <boolProp name="TransactionController.includeTimers">false</boolProp>
                 <boolProp name="TransactionController.parent">true</boolProp>
               </TransactionController>
