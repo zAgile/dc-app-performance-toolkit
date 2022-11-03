@@ -40,25 +40,11 @@ def app_specific_action(webdriver, datasets):
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             page.wait_until_visible((By.ID, "summary-val"))
-            """element = page.get_element((By.XPATH, '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]'))
-            if page.get_element((By.XPATH, '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]')).size() != 0:
-                page.get_element((By.XPATH, '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]')).click()
-                page.wait_until_any_element_visible((By.XPATH, '//*[@id="send-attachments-dialog"]'))
-                page.get_element((By.XPATH,
-                                  '//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/input')).click()
-                page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/button')).click()
-                page.wait_until_visible((By.XPATH,
-                                         '//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/img[contains(@id,"success")]'))
-                page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/a')).click()"""
-
-            try:
-                page.get_element((By.XPATH, '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]')).click()
-                page.wait_until_any_element_visible((By.XPATH, '//*[@id="send-attachments-dialog"]'))
-                page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/input')).click()
-                page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/button')).click()
-                page.wait_until_visible((By.XPATH,'//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/img[contains(@id,"success")]'))
-                page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/a')).click()
-            except:
-                pass
+            page.get_element((By.XPATH, '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]')).click()
+            page.wait_until_any_element_visible((By.XPATH, '//*[@id="send-attachments-dialog"]'))
+            page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/input')).click()
+            page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/button')).click()
+            page.wait_until_visible((By.XPATH,'//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/img[contains(@id,"success")]'))
+            page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/a')).click()
         sub_measure()
     measure()
