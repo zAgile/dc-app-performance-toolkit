@@ -19,15 +19,16 @@ def app_specific_action(webdriver, datasets):
             page.wait_until_visible((By.XPATH, '//*[@id="container-wrap"]/table[contains(@class,"sf-properties-panel")]'))  # Wait for you app-specific UI element by ID selector
         sub_measure()
 
-        @print_timing("selenium_app_custom_action:open_detaill")
+        @print_timing("selenium_app_custom_action:open_detail")
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             page.wait_until_visible((By.ID, "summary-val"))
             locator = (By.XPATH, "//*[@id='container-wrap']/table/tbody/tr/td/a[contains(@onclick,'SalesforcePropertiesDetails')]")
             table = page.wait_until_visible(locator)
             element = table.get_attribute("onclick")
-            url = element[40:-2]
-            page.go_to_url(f"{JIRA_SETTINGS.server_url}"+url)
+            start = element.find('"')+1
+            url = element[start:-2]
+            page.go_to_url(url)
             page.get_element((By.XPATH, '//*[@id="details"]/div/div[1]/h2'))
             page.get_element((By.XPATH, '//*[@id="commentsTab"]')).click()
             page.get_element((By.XPATH, '//*[@id="attachmentsTab"]')).click()
