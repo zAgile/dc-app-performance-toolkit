@@ -57,19 +57,6 @@ def app_specific_action(locust):
 
 
 
-    """GET FEEDS - SHOW MORE"""
-    r = locust.get(f'/rest/zagile-sf/1.0/{issue_key}/feed/{case_id}?pageSize=20',
-                   catch_response=True)
-    content = r.content.decode('utf-8')
-
-    token_pattern_example = '"token":"(.+?)"'
-    id_pattern_example = '"id":"(.+?)"'
-    token = re.findall(token_pattern_example, content)
-    id = re.findall(id_pattern_example, content)
-
-    logger.locust_info(f'token: {token}, id: {id}')
-    assert r.status_code is 200, "bad request or no exist feeds"
-
 
 
     """GET EMAILS"""
