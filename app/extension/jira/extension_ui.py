@@ -38,7 +38,36 @@ def app_specific_action(webdriver, datasets):
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
-            page.wait_until_visible((By.ID, "ID_OF_YOUR_APP_SPECIFIC_UI_ELEMENT"))  # Wait for you app-specific UI element by ID selector
+            locator = (
+                By.XPATH,
+                "//*[@id='container-wrap']/table/tbody/tr/td/a[contains(@onclick,'SalesforcePropertiesDetails')]")
+            table = page.wait_until_visible(locator)
+            element = table.get_attribute("onclick")
+            start = element.find('"') + 1
+            url = element[start:-2]
+            page.go_to_url(url)
+            page.get_element((By.XPATH, '//*[@id="details"]/div/div[1]/h2'))
+            page.get_element((By.XPATH, '//*[@id="commentsTab"]')).click()
+            page.get_element((By.XPATH, '//*[@id="attachmentsTab"]')).click()
+            page.get_element((By.XPATH, '//*[@id="feedsTab"]')).click()
+            page.get_element((By.XPATH, '//*[@id="emailsTab"]')).click()
+        sub_measure()
+
+        @print_timing("selenium_app_custom_action:send attachment to SF")
+        def sub_measure():
+            page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
+            page.wait_until_visible((By.ID, "summary-val"))
+            existElement = page.element_exists((By.XPATH,
+                                                '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]'))
+            if existElement == True:
+                page.get_element((By.XPATH,
+                                  '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]')).click()
+                page.wait_until_any_element_visible((By.XPATH, '//*[@id="send-attachments-dialog"]'))
+                page.get_element((By.XPATH,
+                                  '//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/input')).click()
+                page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/button')).click()
+                page.wait_until_visible((By.XPATH,
+                                         '//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/img[contains(@id,"success")]'))
+                page.get_element((By.XPATH, '//*[@id="send-attachments-dialog"]/div/div[2]/a')).click()
         sub_measure()
     measure()
-
