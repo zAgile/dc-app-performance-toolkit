@@ -38,9 +38,16 @@ def app_specific_action(webdriver, datasets):
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
+            page.wait_until_visible((By.XPATH,
+                                     '//*[@id="container-wrap"]/table[contains(@class,"sf-properties-panel")]'))  # Wait for you app-specific UI element by ID selector
+        sub_measure()
+
+        @print_timing("selenium_app_custom_action:open_detail")
+        def sub_measure():
+            page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
+            page.wait_until_visible((By.ID, "summary-val"))
             locator = (
-                By.XPATH,
-                "//*[@id='container-wrap']/table/tbody/tr/td/a[contains(@onclick,'SalesforcePropertiesDetails')]")
+            By.XPATH, "//*[@id='container-wrap']/table/tbody/tr/td/a[contains(@onclick,'SalesforcePropertiesDetails')]")
             table = page.wait_until_visible(locator)
             element = table.get_attribute("onclick")
             start = element.find('"') + 1
