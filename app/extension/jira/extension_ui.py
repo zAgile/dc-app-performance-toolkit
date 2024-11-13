@@ -64,11 +64,13 @@ def app_specific_action(webdriver, datasets):
         def sub_measure():
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             page.wait_until_visible((By.ID, "summary-val"))
-            existElement = page.element_exists((By.XPATH,
-                                                '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]'))
+            webdriver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
+            locator = (By.XPATH, '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]')
+            existElement = page.element_exists(locator)
             if existElement == True:
-                page.get_element((By.XPATH,
-                                  '//*[@id="container-wrap"]/table/tbody/tr/td/a[contains(@onclick,"displaySendAttachmentsDialog")]')).click()
+                clipButton = page.wait_until_visible(locator)
+                webdriver.execute_script("arguments[0].scrollIntoView();", clipButton)
+                clipButton.click()
                 page.wait_until_any_element_visible((By.XPATH, '//*[@id="send-attachments-dialog"]'))
                 page.get_element((By.XPATH,
                                   '//*[@id="send-attachments-dialog"]/div/div[1]/div/table/tbody/tr[1]/td[1]/input')).click()
